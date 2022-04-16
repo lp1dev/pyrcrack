@@ -92,9 +92,10 @@ class ExecutorHelper:
         self.tempfile = None
         self.tempdir = None
         if self.requires_tempfile:
-            self.tempfile = tempfile.NamedTemporaryFile()
+            self.tempfile = tempfile.NamedTemporaryFile(delete=False)
         elif self.requires_tempdir:
-            self.tempdir = tempfile.TemporaryDirectory()
+            os.mkdir('/tmp/aircrack/')
+            self.tempdir = '/tmp/aircrack/'
         if self.requires_root and not os.getenv("SKIP_ROOT_CHECK"):
             if os.geteuid() != 0:
                 raise Exception("Must be run as root")
