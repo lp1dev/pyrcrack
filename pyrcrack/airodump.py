@@ -80,7 +80,7 @@ class AirodumpNg(ExecutorHelper):
             'background': 1,
             'write': self.tempdir + '/' + self.uuid,
             'write-interval': 1,
-            'output-format': 'netxml,logcsv',
+            'output-format': 'netxml,logcsv,pcap',
             **kwargs
         }
 
