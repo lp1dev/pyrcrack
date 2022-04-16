@@ -232,7 +232,7 @@ class ExecutorHelper:
         """Create temporary directories and files if required."""
         if self.requires_tempfile and self.tempfile:
             self.tempfile.__enter__()
-        if self.requires_tempdir and not os.isdir('/tmp/aircrack'):
+        if self.requires_tempdir and not os.path.isdir('/tmp/aircrack'):
             os.mkdir('/tmp/aircrack/')
         return self
 
