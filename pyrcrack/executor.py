@@ -219,8 +219,8 @@ class ExecutorHelper:
         if self.tempfile:
             self.tempfile.__exit__(exc_type, exc_val, exc_tb)
 
-        if self.tempdir:
-            self.tempdir.__exit__(exc_type, exc_val, exc_tb)
+#        if self.tempdir:
+#            self.tempdir.__exit__(exc_type, exc_val, exc_tb)
 
         if exc_type in (ProcessLookupError, subprocess.CalledProcessError):
             return True
@@ -233,8 +233,8 @@ class ExecutorHelper:
         """Create temporary directories and files if required."""
         if self.requires_tempfile and self.tempfile:
             self.tempfile.__enter__()
-        elif self.requires_tempdir and self.tempdir:
-            self.tempdir.__enter__()
+#        elif self.requires_tempdir and self.tempdir:
+#            self.tempdir.__enter__()
         return self
 
 
