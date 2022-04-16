@@ -78,7 +78,7 @@ class AirodumpNg(ExecutorHelper):
 
         kwargs = {
             'background': 1,
-            'write': self.tempdir.name + '/' + self.uuid,
+            'write': self.tempdir + '/' + self.uuid,
             'write-interval': 1,
             'output-format': 'netxml,logcsv',
             **kwargs
@@ -99,7 +99,7 @@ class AirodumpNg(ExecutorHelper):
 
         Returns: full filename
         """
-        return f"{self.tempdir.name}/{self.uuid}-{self.execn:02}.{format}"
+        return f"{self.tempdir}/{self.uuid}-{self.execn:02}.{format}"
 
     @property
     async def results(self) -> list:

@@ -94,7 +94,6 @@ class ExecutorHelper:
         if self.requires_tempfile:
             self.tempfile = tempfile.NamedTemporaryFile(delete=False)
         elif self.requires_tempdir:
-            os.mkdir('/tmp/aircrack/')
             self.tempdir = '/tmp/aircrack/'
         if self.requires_root and not os.getenv("SKIP_ROOT_CHECK"):
             if os.geteuid() != 0:
@@ -233,8 +232,8 @@ class ExecutorHelper:
         """Create temporary directories and files if required."""
         if self.requires_tempfile and self.tempfile:
             self.tempfile.__enter__()
-#        elif self.requires_tempdir and self.tempdir:
-#            self.tempdir.__enter__()
+        if self.requires_tempdir and not os.isdir('/tmp/aircrack'):
+            os.mkdir('/tmp/aircrack/')
         return self
 
 
